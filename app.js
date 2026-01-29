@@ -4,7 +4,14 @@ const list = document.getElementById("todo-list");
 
 function createTodoItem(text) {
   const li = document.createElement("li");
-  li.textContent = text;
+
+  const span = document.createElement("span");
+  span.textContent = text;
+
+  span.addEventListener("click", () => {
+    span.style.textDecoration =
+      span.style.textDecoration === "line-through" ? "none" : "line-through";
+  });
 
   const delBtn = document.createElement("button");
   delBtn.textContent = "Delete";
@@ -14,6 +21,7 @@ function createTodoItem(text) {
     li.remove();
   });
 
+  li.appendChild(span);
   li.appendChild(delBtn);
   return li;
 }

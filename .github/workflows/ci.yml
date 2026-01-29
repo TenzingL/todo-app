@@ -2,16 +2,14 @@ name: CI
 
 on:
   push:
-    branches: [main]
   pull_request:
-    branches: [main]
 
 jobs:
-  check:
+  verify:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Verify notes folder exists
-        run: |
-          test -d notes
-          echo "Notes folder exists!"
+      - name: Verify README exists
+        run: test -f README.md
+      - name: List repository files
+        run: ls -la
